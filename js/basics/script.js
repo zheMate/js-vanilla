@@ -221,3 +221,7 @@ undefined + 1 = NaN // (6)
 */ 
 
 
+let firstArgument = prompt("Первое число?", 1);
+let secondArgument = prompt("Второе число?", 2);
+
+alert(`Результат примера 1 + 2 => ${+firstArgument + +secondArgument} `); 
