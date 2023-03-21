@@ -261,7 +261,7 @@ if (mysteryNumber > 0) {
 } else if (mysteryNumber < 0) {
     alert(-1);
 }
-else{
+else {
     alert(0);
 }
 
@@ -271,9 +271,74 @@ result = (a + b < 4) ? 'Мало' : 'Много';
 
 let message;
 
-(login == 'Сотрудник') 
-? message = 'Привет' 
-: (login == 'Директор') 
-?  message = 'Здравствуйте' 
-: (login == '') ? message = 'Хм, а где логин ?'
-: message = '';
+(login == 'Сотрудник')
+    ? message = 'Привет'
+    : (login == 'Директор')
+        ? message = 'Здравствуйте'
+        : (login == '') ? message = 'Хм, а где логин ?'
+            : message = '';
+
+
+/* 
+Выведет 2 первое true значение у ИЛИ
+alert( null || 2 || undefined );
+
+alert(1) выведет undefined ИЛИ будет искать истину и выведет 2 и на этом остановится
+alert( alert(1) || 2 || alert(3) );
+
+alert выведет null тк у оператора И в приоритете false
+alert( 1 && null && 2 );
+
+вывод 1 потом undefined
+alert(alert(1) && alert(2));
+
+у оператора И приоритет => сначало он 2 И 3 оба значения 
+true => выводится последнее => выражение приобреатет вид
+null || 3 || 4 => ИЛИ ищет истину, а первая истина 3 
+alert( null || 2 && 3 || 4 );
+
+let ageOfSomebody = 90;
+if(ageOfSomebody >= 14 && <= 90) {
+    alert(`Интересный возраст : ${ageOfSomebody}`);
+}
+else{
+    alert(`ООООООЧЕНЬ интересный возраст : ${ageOfSomebody}`);
+}
+
+if(!(ageOfSomebody >= 14 && age <= 90))
+
+if(ageOfSomebody < 14 || age > 90)
+
+// Выполнится
+// -1 => true
+if (-1 || 0) alert( 'first' );
+
+// Не выполнится
+// И ищет false 
+if (-1 && 0) alert( 'second' );
+
+// Выполнится
+// И если оба тру => последнее значение => null || 1 => ИЛИ ищет тру => алерт выполнится
+if (null || -1 && 1) alert( 'third' );
+
+let login = prompt("Введите ваш логин: ", "");
+if (login === "Админ") {
+    let password = prompt("Введите пароль: ", "");
+
+    if (password === "Я Главный") {
+        alert("Здравствуйте");
+    }
+    else if (password === '' || password === null) {
+        alert("Отменено");
+    } else {
+        alert("Неверный пароль");
+    }
+}
+else if (login === '' || login === null) {
+    alert("Отменено !");
+}
+else {
+    alert("Я вас не знаю");
+}
+
+ */
