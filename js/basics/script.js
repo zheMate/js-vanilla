@@ -428,4 +428,55 @@ switch(number) {
     alert('Вы ввели число 2, а может и 3');
     break;
 }
+
+function checkAge(age) {
+  if (age > 18) {
+    return true;
+  } else {
+    // ...
+    return confirm('Родители разрешили?');
+  }
+}
+↑ Оба вариант работают одинаково ↓
+function checkAge(age) {
+  if (age > 18) {
+    return true;
+  }
+  // ...
+  return confirm('Родители разрешили?');
+}
+
+let age = prompt("Ваш возраст ?", "");
+
+function checkAge(age){
+    (+age > 18) ? alert('true') : confirm('Родители разрешили ?');
+}
+checkAge(+age);
+
+function checkAge(age){
+    return (age > 18) || confirm('Родители разрешили ?');
+}
+checkAge(+age);
+
+function min(firstOperand, secondOperand){
+    (+firstOperand > +secondOperand) ? alert(`Меньшее число ${secondOperand}`) : alert(`Меньшее число ${firstOperand}`);
+}
+
+function pow(number, degree){
+    let result =  number ** degree;
+    return result;
+}
+
+
+let number = prompt("Введите число для возведения в степень : ", 0);
+let degree = prompt("Введите степень для числа : ", 0);
+
+
+if (degree < 1){
+    alert(`Степень ${degree} не поддерживается, используйте натуральное число`);
+}
+else{
+    alert(`Результат возведения в степень => ${pow(number, degree)}` );
+}
+
  */
