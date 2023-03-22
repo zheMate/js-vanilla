@@ -661,7 +661,7 @@ let ladder = {
     alert("Cумма объектов : " + calculator.a + " + " + calculator.b + " = " + calculator.sum());
     alert("Произведение объектов : " + calculator.a + " * " + calculator.b + " = " + calculator.mul());
 
-    
+
 function Accumulator(startingValue) {
     this.value = startingValue;
     this.read = function() {
@@ -675,5 +675,12 @@ accumulator.read();
 accumulator.read();
 alert(accumulator.value);
 
+
+
+let str = "Привет";
+
+str.test = 5; // примитивы => не являются объектами
+
+alert(str.test);
  */
 
