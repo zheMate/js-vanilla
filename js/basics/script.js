@@ -569,4 +569,73 @@ function multiplyNumeric(obj) {
 }
 
 console.log(`Результат умножения ${multiplyNumeric(menu)}`);
+
+
+function makeUser() {
+  return {
+    name: "John",
+    ref: this
+  };
+}
+
+let user = makeUser();
+
+alert( user.ref.name ); // Error: Cannot read property 'name' of undefined
+
+Исправление примера выше ↓
+function makeUser() {
+  return {
+    name: "John",
+    ref() {
+      return this;
+    }
+  };
+}
+
+let user = makeUser();
+
+alert( user.ref().name ); // John
+
+let calculator = {
+  
+    read() {
+        this.a = +prompt("Введите a : ", 0);
+        this.b = +prompt("Введите b: ", 0);
+    },
+    sum() {
+        return this.a + this.b;
+    },
+    mul(){
+        return this.a * this.b;
+    },  
+};
+
+calculator.read();
+alert( calculator.sum() );
+alert( calculator.mul() );
+
+
+let ladder = {
+    step: 0,
+    up() {
+      this.step++;
+      return this;
+    },
+    down() {
+      this.step--;
+      return this;
+    },
+    showStep() {
+      alert( this.step );
+      return this;
+    }
+  };
+  
+  ladder
+  .up()
+  .up()
+  .down()
+  .showStep()
+  .down()
+  .showStep(); 
  */
