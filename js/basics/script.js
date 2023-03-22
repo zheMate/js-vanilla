@@ -723,5 +723,40 @@ function random(min, max) {
   }
   alert(randomInteger(1,3));
 
+  function ucFirst(str) {
+      if (!str) return str;
+      return str[0].toUpperCase() + str.slice(1);
+  }
+  alert(ucFirst("петя"));
+  
+  let result;
+  function checkSpam(str) {
+      let strToLow = str.toLowerCase();
+      result = strToLow.includes('viagra') || strToLow.includes('xxx');
+      if (result === true) {
+          alert("Данное сообщение содержит спам !");
+      }
+      else {
+          alert("Это сообщение без спама");
+      }
+  }
+  
+  checkSpam('buy ViAgRA now');
+  checkSpam('free xxxxx');
+  checkSpam("innocent rabbit");
+
+  function truncate(str, maxlength){
+      return (str.length > maxlength) ?
+     alert(str.slice(0, maxlength - 1)) + '...' : alert(str);
+  }
+  
+  truncate("Вот, что мне хотелось бы сказать на эту тему:", 20);
+  truncate("Всем привет!", 20);
+
+  function extractValueOfCurrency(str) {
+    return +str.slice(1);
+  }
+
  */
+
 
