@@ -757,6 +757,79 @@ function random(min, max) {
     return +str.slice(1);
   }
 
+  let fruits = ["Яблоки", "Груша", "Апельсин"];
+  
+  let shoppingCart = fruits;
+  
+  shoppingCart.push("Банан");
+  
+  alert(fruits.length); // 4
+
+  let styles = ["Джаз", "Блюз"];
+  styles.push("Рок-н-ролл");
+  styles[Math.floor((styles.length - 1)/2)] = "Классика";
+  styles.shift();
+  styles.unshift("Реп", "Регги");
+  alert(styles);
+
+  let arr = ["a", "b"];
+
+arr.push(function() {
+  alert( this );
+})
+
+arr[2](); // a,b,function(){...}
+
+function sumInput(){
+    let numbers = [];
+    while(true) {
+        let value = prompt("Введите число", 0);
+        if(value === "" || value === null || !isFinite(value)) break;
+        numbers.push(+value);
+    }
+    let sum = 0;
+    for(let number of numbers) {
+        sum += number;
+    }
+    return sum;
+}
+
+alert(sumInput());
+
+
+function getMaxSubSum(arr) {
+    let maxSum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        let sumFixedStart = 0;
+        for(let j = i; j < arr.length; j++){
+            sumFixedStart += arr[j];
+            maxSum = Math.max(maxSum, sumFixedStart);
+        }
+    }
+    return alert("Из массива : " + arr + " \nМаксимальная сумма непрерывного массива => " + maxSum);
+}
+
+getMaxSubSum([-1, 2, 3, -9]);
+
+function getMaxSubSum(arr){
+    let maxSum = 0;
+    let partialSum = 0;
+    for(let item of arr) {
+        partialSum += item;
+        maxSum = Math.max(maxSum, partialSum);
+        if (partialSum < 0) partialSum = 0;
+    }
+    return alert("Из массива : " + arr + " \nМаксимальная сумма непрерывного массива => " + maxSum);
+}
+
+ getMaxSubSum([-1, 2, 3, -9]); 
+ getMaxSubSum([-1, 2, 3, -9, 11]); 
+ getMaxSubSum([-2, -1, 1, 2]); 
+ getMaxSubSum([100, -9, 2, -3, 5]); 
+ getMaxSubSum([1, 2, 3]); 
+ getMaxSubSum([-1, -2, -3]);
+
+ 
  */
 
 
