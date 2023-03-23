@@ -829,7 +829,176 @@ function getMaxSubSum(arr){
  getMaxSubSum([1, 2, 3]); 
  getMaxSubSum([-1, -2, -3]);
 
+ function camelize(str) {
+     return alert(str.split('-').map((word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1)).join(''));
+ }
  
+ camelize("background-color");
+ camelize("list-style-image");
+ camelize("-webkit-transition");
+
+ function filterRange(arr, a, b) {
+    let result = arr.filter(item => (a <= item && item <=b));
+    return alert("В массиве => " + arr + "\nв промежутке от " + a + " до " + b + "\nподходят следующие значения : " + result);
+};
+
+let arr = [5, 3, 8, 1];
+
+filterRange(arr, 1, 4);
+
+function filterRangeInPlace(arr, a, b) {
+    for (let i = 0; i < arr.length; i++) {
+        let val = arr[i];
+        if (val < a || val > b) {
+            arr.splice(i, 1);
+            i--;
+        }
+    }
+    return alert(`Новый массив подходящий под условии промежутка ${arr}`);
+}
+
+let arr = [5, 3, 8, 1];
+filterRangeInPlace(arr, 1, 4);
+
+let arr = [5, 2, 1, -10, 8]; 
+arr.sort(function(item1, item2){ return item2 - item1 });
+alert(arr);
+
+function copySorted(arr){
+    return arr.slice().sort();
+}
+
+let arr = ["HTML", "JavaScript", "CSS"];
+let sorted = copySorted(arr);
+alert("Исходный массив => " + arr + "\nОтсортированная копия => " + sorted);
+
+function Calculator() {
+    this.methods = {
+        "-": (a, b) => a - b,
+        "+": (a, b) => a + b,
+    };
+    this.calculate = function (str) {
+        let split = str.split(' '),
+            a = +split[0],
+            op = split[1],
+            b = +split[2]
+        if (!this.methods[op] || isNaN(a) || isNaN(b)) {
+            return NaN;
+        }
+        return alert("Результат вычислений => " + a + "  " + op + "  " + b + " = " + this.methods[op](a, b));
+    }
+    this.addMethod = function(name, func) {
+        this.methods[name] = func;
+        return alert("Функция " +"\""+ name + "\"" +" с математическиим действием " + func + "\nУспешно добавлена в калькулятор !" );
+    }
+}
+
+let powerCalc = new Calculator;
+powerCalc.addMethod("*", (a, b) => a * b);
+powerCalc.addMethod("/", (a, b) => a / b);
+powerCalc.addMethod("**", (a, b) => a ** b);
+
+let result = powerCalc.calculate("2 ** 3");
+let division = powerCalc.calculate("6 / 2");
+
+
+let vasya = { name: "Вася", age: 25};
+let petya = { name: "Петя", age: 30};
+let masha = { name: "Маша", age: 28};
+
+let users = [vasya, petya, masha];
+
+let names = users.map(item => item.name); 
+
+console.log(vasya);
+alert(names);
+
+let vasya = { name: "Вася", surname: "Пупкин", id: 1};
+let petya = { name: "Петя", surname: "Иванов", id: 2};
+let masha = { name: "Маша", surname: "Петрова", id: 3};
+
+let users = [vasya, petya, masha];
+
+let usersMapped = users.map(user => ({
+    fullName: `${user.name} ${user.surname}`,
+    id: user.id
+}));
+
+console.log(usersMapped);
+
+alert(usersMapped[1].id);
+alert(usersMapped[2].fullName);
+
+function sortByAge(arr) {
+    arr.sort((a, b) => a.age > b.age ? 1 : -1);
+}
+
+let vasya = { name: "Вася", age: 25};
+let petya = { name: "Петя", age: 30};
+let masha = { name: "Маша", age: 28};
+
+let arr = [vasya, petya, masha];
+sortByAge(arr);
+
+console.log(arr);
+
+function shuffle(array) {
+    for(let i = array.length - 1; i > 0; i--){
+        let j = Math.floor(Math.random() * (i+1));
+        let t = array[i];
+        array[i] = array[j];
+        array[j] = t;
+    
+    }
+}
+let array = [1, 2, 3];
+shuffle(array);
+console.log(array);
+
+function getAverageAge(users) {
+    return users.reduce((previousUser, currentUser) => previousUser + currentUser.age, 0) /users.length;
+}
+
+let vasya = { name: "Вася", age: 45 };
+let petya = { name: "Петя", age: 30 };
+let masha = { name: "Маша", age: 15 };
+
+let users = [ vasya, petya, masha ];
+
+console.log("Средний возраст пользователей ↓");
+console.log(users);
+console.log(`Равен ${getAverageAge(users)}`);
+
+function unique(arr) {
+    let result = [];
+    for (let str of arr) {
+        if (!result.includes(str)) {    
+            result.push(str);
+        }
+    }
+    return result;
+}
+
+let strings = ["кришна", "кришна", "харе", "харе",
+  "харе", "харе", "кришна", "кришна", ":-O"
+];
+
+alert(`В массиве ↓\n${strings}\nУникальные значения ↓\n${unique(strings)}`);
+
+function groupById(array) {
+    return array.reduce((obj, value) => {
+        obj[value.id] = value;
+        return obj;
+    }, {})
+}
+
+let users = [
+    { id: 'john', name: "John Smith", age: 20 },
+    { id: 'ann', name: "Ann Smith", age: 24 },
+    { id: 'pete', name: "Pete Peterson", age: 31 },
+];
+
+let userById = groupById(users);
+console.log(userById);
+
  */
-
-
