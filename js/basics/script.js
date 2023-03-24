@@ -1031,4 +1031,32 @@ map.set("name", "John");
 let keys = Array.from(map.keys());
 keys.push("more");
 alert(keys);
+
+let messages = [
+    {text: "Hello", from: "John"},
+    {text: "How it goes ?", from: "John"},
+    {text: "See you soon", from: "Alice"},
+    {text: "Stay tuned", from: "John"},
+];
+
+let readMessages = new WeakSet();
+
+readMessages.add(messages[0]);
+readMessages.add(messages[1]);
+
+readMessages.add(messages[0]);
+
+alert("Read message 0: " + readMessages.has(messages[0]));
+
+let messages = [
+    {text: "Hello", from: "John"},
+    {text: "How it goes ?", from: "John"},
+    {text: "See you soon", from: "Alice"},
+    {text: "Stay tuned", from: "John"},
+];
+
+let readMap = new WeakMap();
+
+readMap.set(messages[0], new Date(2017, 1, 1));
+
  */
