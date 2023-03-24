@@ -1214,4 +1214,25 @@ alert(formatDate(new Date(new Date - 5 * 60 * 1000))); // "5 мин. назад"
 // вчерашняя дата вроде 31.12.2016, 20:00
 alert(formatDate(new Date(new Date - 86400 * 1000)));
 
+let user = {
+    name: "Василий Иванович",
+    age: 35,
+};
+let user2 = JSON.parse(JSON.stringify(user));
+
+let room = {
+    number: 23,
+};
+let meetup = {
+    title: "Совещание",
+    occupiedBy: [{name: "Иванов"}, {name: "Петров"}],
+    place: room
+};
+room.occupiedBy = meetup;
+meetup.self = meetup;
+
+alert(JSON.stringify(meetup, function replacer(key, value){
+    return (key != "" && value == meetup) ? undefined : value; 
+}));
+
  */
