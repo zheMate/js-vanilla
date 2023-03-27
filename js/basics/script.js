@@ -773,4 +773,38 @@ function makeArmy() {
   alert(sum(6)(-1)(-2)(-3));
   alert(sum(0)(1)(2)(3)(4)(5)); 
   
+  function printNumbers(from, to){
+    let current = from;
+    let timerId = setInterval(function() {
+        alert(current);
+        if(current == to) {
+            clearInterval(timerId);
+        }
+        current++;
+    }, 1000);
+  }
+  
+  function printNumbers(from, to) {
+      let current = from; 
+      function go() {
+          alert(current);
+          if(current == to) {
+              clearInterval(timerId);
+          }
+          current++;
+      }
+      go();
+      let timerId = setInterval(go, 1000);
+  }
+  
+  printNumbers(5, 10);
+
+  let i = 0; // Любой вызов setTimeout будет выполнен только после того как текущий код завершиться 
+
+setTimeout(() => alert(i), 100); // 100000000
+
+// предположим, что время выполнения этой функции >100 мс
+for(let j = 0; j < 100000000; j++) {
+  i++;
+}
  */
