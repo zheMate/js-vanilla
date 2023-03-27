@@ -22,8 +22,8 @@
 // let ourPlanetName = "Земля";
 // let currentUserName = "Джон";
 
-// /*  наименование констант в верхнем регистре только 
-// у переменных хранящих сильно закадированные данные, или же 
+// /*  наименование констант в верхнем регистре только
+// у переменных хранящих сильно закадированные данные, или же
 // когда значение константы известно до выполнения скрипта и записывается в код*/
 // const LIGHT_SALMON = "#ffa07a";
 // const BIRTHDAY = "13.12.2012";
@@ -37,13 +37,13 @@
 // const myAge = someCode();
 // alert(myAge);
 
-// /* Infinity,   
+// /* Infinity,
 //  -Infinity, NaN это тоже числа   */
 // alert(1 / 0);
 // // Большой инт - в конце обязательно буква "n"
 // const bigInt = 1234567890123456789012345678901234567890n;
 // alert(bigInt);
-// /* Разница между "" и '' нет, 
+// /* Разница между "" и '' нет,
 // в то время как `` могут склеивать значения */
 // let str = "Привет";
 // let str2 = 'Мир';
@@ -57,7 +57,7 @@
 // данных undefined */
 // let cozyAge;
 // alert(cozyAge);
-// /* null => для присовения переменной 
+// /* null => для присовения переменной
 // "пустого" или "неизвестного" значения
 // undefined => для проверок была ли переменная назначена
 // */
@@ -121,8 +121,8 @@
 // // более длинный вариант
 // // alert( Number(apples) + Number(oranges) ); // 5
 
-// /* Сокращённая арифметика с присваиванием 
-// у вызовы с присваиванием точно такой же приоритет что и 
+// /* Сокращённая арифметика с присваиванием
+// у вызовы с присваиванием точно такой же приоритет что и
 // обычное присваивание
 // */
 
@@ -146,7 +146,7 @@
 // alert(anotherCounter);
 
 // /* можно писать как в постфиксной форме, так и в префиксной форме */
-// /* 
+// /*
 // counter++
 // ++counter
 // */
@@ -162,7 +162,7 @@
 
 // /* Если результат оператора не используется, а нужно только увеличить/уменьшить переменную => тогда без разницы что использовать */
 
-// /* 
+// /*
 // let counter = 0;
 // counter++;
 // ++counter;
@@ -171,14 +171,14 @@
 
 // /* Если тут же хочется использовать результат, то нужна префиксная форма */
 
-// /* 
+// /*
 // let counter = 0;
 // alert(++counter); // 1
 // */
 
 // /* Если нужно увеличить и при этом получить значение переменной до увеличения - нужна постфиксная форма */
 
-// /* 
+// /*
 // let counter = 0;
 // alert(counter++); // 0
 // */
@@ -189,7 +189,7 @@
 // /* Без них в a=1 + 2, 3 + 4 сначала выполнится +, суммируя числа в a = 3, 7 после будет присвоение a = 3, остальное будет игнорировано, точно также как в (a = 1 + 2), 3 + 4*/
 
 
-// /* 
+// /*
 // "" + 1 + 0 = "10" // (1)
 // "" - 1 + 0 = -1 // (2)
 // true + false = 1
@@ -225,7 +225,7 @@
 // alert(`Результат примера 1 + 2 => ${+firstArgument + +secondArgument} `);
 
 
-// /* 
+// /*
 // 5 > 4 → true
 // "ананас" > "яблоко" → false
 // "2" > "12" → true
@@ -235,7 +235,7 @@
 // null === +"\n0\n" → false
 // */
 
-// /* 
+// /*
 // Да, выведется.
 // Любая строка, кроме пустой (а строка "0" – не пустая), в логическом контексте становится true.
 // Можно запустить и проверить:
@@ -637,5 +637,113 @@ let list = {
   }
   
   printReverseList(list);
+
+function makeCounter() {
+  let count = 0;
+
+  return function() {
+    return count++;
+  };
+}
+
+let counter = makeCounter();
+let counter2 = makeCounter();
+
+alert( counter() ); // 0
+alert( counter() ); // 1
+
+alert( counter2() ); // 0
+alert( counter2() ); // 1
+
+function Counter() {
+  let count = 0;
+
+  this.up = function() {
+    return ++count;
+  };
+
+  this.down = function() {
+    return --count;
+  };
+}
+
+let counter = new Counter();
+
+alert( counter.up() ); // 1
+alert( counter.up() ); // 2
+alert( counter.down() ); // 1
+
+let phrase = "Hello";
+
+if (true) {
+  let user = "John";
+
+  function sayHi() {
+    alert(`${phrase}, ${user}`);
+  }
+}
+
+sayHi();//ошибка sayHi живёт только внутри блока
+
+function sum(a) {
+    return function(b) {
+        return a + b;
+    };
+}
+alert(sum(1)(2));
+alert(sum(5)(-1));
+
+function inBetween(a, b) {
+    return function(x) {
+        return x >= a && x <= b;
+    };
+}
+
+function inArray(arr) {
+    return function(x) {
+        return arr.includes(x);
+    };
+}
+
+let arr = [1, 2, 3, 4, 5, 6, 7];
+alert( arr.filter(inBetween(3, 6)) ); 
+alert( arr.filter(inArray([1, 2, 10])) ); 
+
+let users = [
+    { name: "John", age: 20, surname: "Johnson" },
+    { name: "Pete", age: 18, surname: "Peterson" },
+    { name: "Ann", age: 19, surname: "Hathaway" }
+];
+
+function byField(field) {
+    return (a, b) => a[field] > b[field] ? 1 : -1;
+}
+
+users.sort(byField('name'));
+users.forEach(user => alert(`${user.name}`));
+
+users.sort(byField('age'));
+users.forEach(user => alert(user.name));
+
+function makeArmy() {
+
+    let shooters = [];
+  
+    for(let i = 0; i < 10; i++) {
+      let shooter = function() { // функция shooter
+        alert( i ); // должна выводить порядковый номер
+      };
+      shooters.push(shooter);
+  
+  
+    }
+  
+    return shooters;
+  }
+  
+  let army = makeArmy();
+  
+  army[0](); // 0
+  army[5](); // 5
 
  */
