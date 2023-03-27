@@ -212,7 +212,7 @@
 // 3).Сложение со строкой превращает число 5 в строку и добавляет к строке.
 
 // 4).Вычитание всегда преобразует к числу, значит строка " -9 " становится числом -9 (пробелы по краям обрезаются).
- 
+
 // 5).null становится 0 после численного преобразования.
 // 6).undefined становится NaN после численного преобразования.
 // 7).Пробельные символы, такие как \t и \n, по краям строки игнорируются при преобразовании в число, так что строка " \t \n", аналогично  пустой строке, становится 0 после численного преобразования.
@@ -508,4 +508,134 @@ else // <- можно на одной строке, вместе: "} else {"
 {
   alert(pow(x,n))  // вложенный вызов функции, нет пробелов и точки с запятой
 }
+
+function sumTo(n) {
+    let sum = 0;
+    for(let i = 1; i <= n; i++) {
+        sum += i;
+    }
+    return sum;
+}
+
+function sumTo(n, level){
+    var returnValue;
+    level = level || 0;
+    console.log(level, 'in', n);
+    if (n == 1) {
+        console.log(level, 'out', 1);
+        return 1;
+    }
+    else {
+        returnValue =  n + sumTo(n-1, level + 1);
+        console.log(level, 'out', returnValue);
+        return returnValue;
+    }
+}
+
+function sumTo(n) {
+    return n * (n+1) / 2;
+}
+alert(sumTo(100));
+
+function factorial(n, level) {
+    var returnValue;
+    level = level || 0;
+    console.log(level, 'in', n);
+    if (n != 1) {
+        returnValue =  n * factorial(n-1, level + 1);
+        console.log(level, 'out', returnValue);
+        return returnValue;
+    }
+    else {
+        console.log(level, 'out', 1)
+        return 1;
+    }
+}
+alert(factorial(5));
+
+function fib(n) {
+    let a = 1;
+    let b = 1;
+    for(let i = 3; i <= n; i++){
+        let c = a + b;
+        a = b;
+        b = c;
+    }
+    return b;
+}
+
+alert(fib(3));
+alert(fib(7));
+alert(fib(77));
+
+let list = {
+    value: 1,
+    next: {
+        value: 2,
+        next: {
+            value: 3,
+            next: {
+                value: 4,
+                next: null
+            }
+        }
+    }
+};
+
+function printList(list) {
+    let tmp = list;
+    while (tmp) {
+        alert(tmp.value);
+        tmp = tmp.next;
+    }
+}
+
+function printList(list) {
+    alert(list.value);
+    if(list.next) {
+        printList(list.next);
+    }
+}
+
+printList(list);
+
+let list = {
+    value: 1,
+    next: {
+      value: 2,
+      next: {
+        value: 3,
+        next: {
+          value: 4,
+          next: null
+        }
+      }
+    }
+  };
+  
+  function printReverseList(list) {
+  
+    if (list.next) {
+      printReverseList(list.next);
+    }
+  
+    alert(list.value);
+  }
+  
+  function printReverseList(list) {
+    let arr = [];
+    let tmp = list;
+  
+    while (tmp) {
+      arr.push(tmp.value);
+      tmp = tmp.next;
+    }
+  
+    for (let i = arr.length - 1; i >= 0; i--) {
+      alert( arr[i] );
+    }
+  }
+  
+  printReverseList(list);
+
  */
