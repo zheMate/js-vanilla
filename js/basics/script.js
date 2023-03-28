@@ -1011,5 +1011,17 @@ class ExtendedClock extends Clock {
     this.timer = setInterval(() => this.render(), this.precision);
   }
 };
+
+class FormatError extends SyntaxError {
+  constructor(message) {
+    super(message);
+    this.name = "FormatError";
+  }
+}
+let err = new FormatError("Ошибка форматирования");
+alert(err.message);
+alert(err.name);
+alert(err.stack);
+alert(err instanceof SyntaxError);
  */
 
