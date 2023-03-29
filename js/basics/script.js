@@ -1175,4 +1175,21 @@ form.querySelector('input')
 // 6. Последний input в этой форме
 let inputs = form.querySelectorAll('input') // найти все input
 inputs[inputs.length-1] // взять последний
+
+for (let li of document.querySelectorAll('li')) {
+  let title = li.firstChild.data;
+
+  // переменная title содержит текст элемента <li>
+}
+
+<html>
+<body>
+    alert(document.body.lastChild.nodeType); // 1 узел-элемент
+</body>
+</html>
+
+  let body = document.body;
+  body.innerHTML = "<!--" + body.tagName + "-->";
+  alert( body.firstChild.data ); // BODY
+
  */
