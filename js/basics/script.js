@@ -1750,5 +1750,32 @@ table.tBodies[0].append(...sortedRows);
       tooltipElem.style.top = top + 'px';
       return tooltipElem;
     }
-    
+
+    function populate() {
+  while(true) {
+    // нижняя граница документа
+    let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
+
+    // если пользователь прокрутил достаточно далеко (< 100px до конца)
+    if (windowRelativeBottom < document.documentElement.clientHeight + 100) {
+      // добавим больше данных
+      document.body.insertAdjacentHTML("beforeend", `<p>Дата: ${new Date()}</p>`);
+    }
+  }
+}
+
+function showVisible() {
+  for (let img of document.querySelectorAll('img')) {
+    let realSrc = img.dataset.src;
+    if (!realSrc) continue;
+
+    if (isVisible(img)) {
+      img.src = realSrc;
+      img.dataset.src = '';
+    }
+  }
+}
+
+showVisible();
+window.onscroll = showVisible;
  */
