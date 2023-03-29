@@ -1191,5 +1191,16 @@ for (let li of document.querySelectorAll('li')) {
   let body = document.body;
   body.innerHTML = "<!--" + body.tagName + "-->";
   alert( body.firstChild.data ); // BODY
+  
+  // получаем элемент
+    let elem = document.querySelector('[data-widget-name]');
 
+    // читаем значение
+    alert(elem.dataset.widgetName);
+    // или так
+    alert(elem.getAttribute('data-widget-name'));
+
+    let selector = 'a[href*="://"]:not([href^="http://internal.com"])';
+    let links = document.querySelectorAll(selector);
+    links.forEach(link => link.style.color = 'orange');
  */
