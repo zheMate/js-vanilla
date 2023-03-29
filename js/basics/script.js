@@ -1788,7 +1788,7 @@ window.onscroll = showVisible;
   genres.append(newOption);
   // 3)
   newOption.selected = true;
-  
+
    function preloadImages(sources, callback) {
       let counter = 0;
       function onLoad() {
@@ -1823,4 +1823,9 @@ window.onscroll = showVisible;
     }
     // должно выводиться 300
     preloadImages(sources, testLoaded);
+
+      area.value = localStorage.getItem('area');
+    area.oninput = () => {
+      localStorage.setItem('area', area.value)
+    };
  */
