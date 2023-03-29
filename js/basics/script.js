@@ -1125,4 +1125,24 @@ promise.then(alert); //Вывод 1 второй resolve будет проигн
   function f(){
     wait().then(result => alert(result));
   }
+  Узел элемента <div> ↓
+  document.body.firstElementChild
+// или
+document.body.children[0]
+// или (первый узел пробел, поэтому выбираем второй)
+document.body.childNodes[1]
+Узел элемента <ul> ↓
+document.body.lastElementChild
+// или
+document.body.children[1]
+Второй элемент <li> с именем Пит ↓
+// получаем <ul>, и его последнего ребёнка
+document.body.lastElementChild.lastElementChild
+
+let table = document.body.firstElementChild;
+
+    for (let i = 0; i < table.rows.length; i++) {
+      let row = table.rows[i];
+      row.cells[i].style.backgroundColor = 'red';
+    }
  */
